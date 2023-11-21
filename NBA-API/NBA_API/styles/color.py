@@ -8,8 +8,10 @@ from enum import Enum
 
 
 class Colors(Enum):
-    BACKGROUND = "#B8CDBF"
+    BACKGROUND = "#0B96C9"
+    HEADER = "/background/background.jpg"
     BG_BOX = "#AACDDA"
     BG_MATCH = "#759AA8"
-    TEXT_COLOR = "#042C3B"
+    SEPARATOR = "white"
+    TEXT_COLOR = "#B7DAE7"
     

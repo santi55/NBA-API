@@ -7,7 +7,7 @@ from enum import Enum
 
 
 class Fonts(Enum):
-    DEFAULT = "Open-Sans"
+    DEFAULT = "Noto-Serif-Old-Uyghur"
     TITLE = "Noto-Serif-Old-Uyghur"
     GHOST = "Creepster"
     

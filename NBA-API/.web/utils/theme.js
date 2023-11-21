@@ -1,0 +1,1 @@
+export default {"styles": {"global": {"body": {"fontFamily": "Noto-Serif-Old-Uyghur", "bgImage": "/background/background.jpg", "backgroundSize": "cover", "backgroundPosition": "center", "backgroundRepeat": "no_repeat", "color": "black"}}}}

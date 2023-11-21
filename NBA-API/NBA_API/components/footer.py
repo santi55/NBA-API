@@ -15,9 +15,8 @@ def footer():
             size=Size.XSMALL.value,
             margin_top="0px !important"
         ),
-        bg=Color.BACKGROUND.value,
         width="100%",
-        margin_top = Size.MEDIUM.value,
-        bottom="0"
+        margin_top = Size.BIG.value,
+        padding=Size.BIG.value
         #position= "fixed"
     )

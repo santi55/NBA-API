@@ -1,69 +1,69 @@
 import requests
 import reflex as rx
+from NBA_API.styles.styles import Size as Size
 from NBA_API.styles.color import Colors as Color
 from NBA_API.styles.font import Fonts as Font
-from NBA_API.state import State
-from typing import List, Dict
-
-
-"""
-#datos jugadores _ modificando el valor de per_page es el numero de jugadores que recoge
-players_url = "https://www.balldontlie.io/api/v1/players?per_page=1"
-
-#datos equipos
-teams_url = "https://www.balldontlie.io/api/v1/teams"
-
-
-#datos match
-
-#llamada request
-response_p = requests.get(players_url)
-response_t = requests.get(teams_url)
-response_f = requests.get(match)
-"""
+from NBA_API.components.match_box import match_box
+from NBA_API.state import State, Game
 
 
 
-
-def display_box(match : dict):
-   return rx.box(rx.text(match["id"]))
-
-
+def display_box(game: Game):
+    return match_box(game)
+   
+#recorre todos los partidos
 def stats_matches():
-    return rx.vstack(
+    return rx.wrap(
         rx.foreach(
-                State.diccionario,
-                display_box
-            )
+            State.lista_partidos_perDay,
+            display_box
+        ),
+        spacing="3",
+        justify="center"
     )
-
     
-    
+def imprimeDay() -> rx.component:
+    return rx.text(State.link_match)
 
 
 def jornada():
-    return rx.hstack(
-        rx.center(
-            rx.icon(
-                tag = "arrow_back",
-                on_click=State.decrementDay()
+    return rx.vstack(
+            rx.hstack(
+                rx.center(
+                    rx.icon(
+                        tag = "arrow_back",
+                            on_click=State.decrementDay()
+                    ),
+                    rx.spacer(),
+                    rx.heading(
+                    State.day_clean,
+                    #color=Color.TEXT_COLOR
+                    font_family= Font.TITLE.value,
+                    font_size = Size.BIG.value
+                    ),
+                    rx.icon(
+                        tag = "arrow_forward",
+                        on_click=State.incrementDay()
+                    )
+                ),
+                border_radius="md",
+                bg="black"
             ),
-            rx.spacer(),
-            rx.heading(
-                State.dayClean,
-                #color=Color.TEXT_COLOR
-                font_family= Font.TITLE.value
-            ),
-            rx.icon(
-                tag = "arrow_forward",
-                on_click=State.incrementDay()
-            ),
-            rx.spacer(),
-            rx.icon(
-                tag = "calendar"
-            ) 
-        )
+        rx.input(
+            type_="date",
+            size= "xs",
+            border_color="black",
+            focus_border_color="orange",
+            error_border_color="red",
+            width="50%",
+            default_value=str(State.date),
+            on_change=State.set_date,
+        ),
+        margin_top=Size.BIG.value,
+        color="white",
+           
     )
+       
 
 
 
