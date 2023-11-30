@@ -3,9 +3,9 @@ import { useRouter } from "next/router"
 import { Event, getAllLocalStorageItems, getRefValue, getRefValues, isTrue, preventDefault, refs, set_val, spreadArraysOrObjects, uploadFiles, useEventLoop } from "/utils/state"
 import { EventLoopContext, initialEvents, StateContext } from "/utils/context.js"
 import "focus-visible/dist/focus-visible"
-import { Box, Button, Checkbox, Divider, Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Heading, HStack, Image, Input, Link, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, Switch, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, useColorMode, VStack } from "@chakra-ui/react"
+import { Box, Card, CardBody, CardFooter, CardHeader, Center, Divider, Flex, Heading, HStack, Image, Input, Link, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, Progress, SimpleGrid, Spacer, Text, useColorMode, VStack, Wrap, WrapItem } from "@chakra-ui/react"
 import NextLink from "next/link"
-import { CloseIcon } from "@chakra-ui/icons"
+import { ArrowBackIcon, ArrowForwardIcon, StarIcon } from "@chakra-ui/icons"
 import NextHead from "next/head"
 
 
@@ -35,10 +35,6 @@ export default function Component() {
     }
   }, [router])
 
-  const ref_username = useRef(null); refs['ref_username'] = ref_username;
-  const ref_check = useRef(null); refs['ref_check'] = ref_check;
-  const ref_email = useRef(null); refs['ref_email'] = ref_email;
-  const ref_switch = useRef(null); refs['ref_switch'] = ref_switch;
 
   return (
     <Fragment>
@@ -80,107 +76,103 @@ export default function Component() {
 </Text>
 </Link>
 </HStack>
-  <HStack justify={`center`} sx={{"margin": "0.8em"}}>
-  <Link as={NextLink} href={`/nba`}>
+  <Center>
+  <VStack justify={`center`} sx={{"maxWidth": "80%", "marginBottom": "2em"}}>
+  <VStack justify={`center`} sx={{"margin": "2em", "padding": "2em"}}>
   <Image src={`/nba.ico`} sx={{"height": "6em", "width": "6em", "borderRadius": "1em 1em 1em 1em ", "border": "0.25em solid white", "boxShadow": "lg", "bg": "black", "max:height": "60%", "maxWidth": "60%"}}/>
-</Link>
-  <Box>
-  <Link as={``} onClick={(_e) => addEvents([Event("state.right", {})], (_e))}>
-  <Image src={`logo.ico`} sx={{"bg": "white", "height": "6em", "width": "6em", "borderRadius": "1em 1em 1em 1em ", "border": "0.25em solid white", "boxShadow": "lg", "max:height": "60%", "maxWidth": "60%"}}/>
-</Link>
-  <Drawer isOpen={state.show_right}>
-  <DrawerOverlay>
-  <DrawerContent sx={{"bg": "rgba(0, 0, 0, 0.3)"}}>
-  <DrawerHeader>
-  {`Confirm`}
-</DrawerHeader>
-  <DrawerBody>
-  <Fragment>
-  {isTrue((state.len_usuarios === 0)) ? (
-  <Fragment>
-  <VStack>
-  <Text>
-  {`no hay usuarios`}
-</Text>
+  <Heading sx={{"color": "white", "fontFamily": "Noto-Serif-Old-Uyghur", "fontSize": "2em", "borderRadius": "md", "bg": "black"}}>
+  {`WORK IN PROGRESS...`}
+</Heading>
+  <Progress colorScheme={`yellow`} isIndeterminate={true} sx={{"width": "100%"}}/>
 </VStack>
+  <SimpleGrid columns={[2, 3, 4, 5, 6]} spacing={`0.25em`}>
+  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30].map((ccohzozo, i) => (
+  <Box key={i} sx={{"maxWidth": "100%"}}>
+  <Center>
+  <Image src={`/teams/${ccohzozo}.ico`} sx={{"height": "6em", "width": "6em", "borderRadius": "1em 1em 1em 1em ", "border": "0.25em solid white", "boxShadow": "lg", "bg": "lightgreen"}}/>
+</Center>
+</Box>
+))}
+</SimpleGrid>
+</VStack>
+</Center>
+  <Box>
+  <Center>
+  <VStack alignItems={`center`} spacing={`2em`} sx={{"marginTop": "0px", "width": "70%"}}>
+  <Divider sx={{"marginBottom": "1em", "marginTop": "0.5em"}}/>
+  <VStack sx={{"marginTop": "2em", "color": "white"}}>
+  <HStack sx={{"borderRadius": "md", "bg": "black"}}>
+  <Center>
+  <ArrowBackIcon onClick={(_e) => addEvents([Event("state.decrementDay", {})], (_e))}/>
+  <Spacer/>
+  <Heading sx={{"fontFamily": "Noto-Serif-Old-Uyghur", "fontSize": "2em"}}>
+  {state.day_clean}
+</Heading>
+  <ArrowForwardIcon onClick={(_e) => addEvents([Event("state.incrementDay", {})], (_e))}/>
+</Center>
+</HStack>
+  <Input defaultValue={`{state.date}`} errorBorderColor={`red`} focusBorderColor={`orange`} onChange={(_e0) => addEvents([Event("state.set_date", {value:_e0.target.value})], (_e0))} size={`xs`} sx={{"borderColor": "black", "width": "50%"}} type={`date`}/>
+</VStack>
+  <Divider sx={{"marginBottom": "1em", "marginTop": "0.5em"}}/>
+  <Wrap justify={`center`} spacing={`3`}>
+  {state.lista_partidos_perDay.map((asslujle, i) => (
+  <WrapItem key={i}>
+  <Card sx={{"alignItems": "center", "width": "100%", "bgImage": "/background/match_box.jpg", "backgroundSize": "cover", "backgroundPosition": "center", "backgroundRepeat": "no_repeat", "backgroundColor": "rgba(0, 0, 0, 0.7)", "border": "0.25em solid white"}}>
+  <CardHeader>
+  <Flex sx={{"width": "100%"}}>
+  <Image src={`/teams/${asslujle.home_team.id}.ico`} sx={{"height": "6em", "width": "6em", "borderRadius": "1em 1em 1em 1em ", "border": "0.25em solid white", "boxShadow": "lg", "bg": "black", "maxHeight": "40%", "maxWidth": "40%"}}/>
+  <Spacer/>
+  <Heading size={`1em`}>
+  {`${asslujle.home_team.abbreviation} vs ${asslujle.visitor_team.abbreviation}`}
+</Heading>
+  <Spacer/>
+  <Image src={`/teams/${asslujle.visitor_team.id}.ico`} sx={{"height": "6em", "width": "6em", "borderRadius": "1em 1em 1em 1em ", "border": "0.25em solid white", "boxShadow": "lg", "bg": "black", "maxHeight": "40%", "maxWidth": "40%"}}/>
+</Flex>
+</CardHeader>
+  <CardBody>
+  <Fragment>
+  {isTrue((asslujle.period === 0)) ? (
+  <Fragment>
+  <Text sx={{"color": "red"}}>
+  {asslujle.status}
+</Text>
 </Fragment>
 ) : (
   <Fragment>
-  <VStack>
-  <TableContainer sx={{"marginTop": "1rem"}}>
-  <Table colorScheme={`teal`} variant={`striped`}>
-  <Thead>
-  <Tr>
-  <Th>
-  {`ID`}
-</Th>
-  <Th>
-  {`Username`}
-</Th>
-  <Th>
-  {`Email`}
-</Th>
-</Tr>
-</Thead>
-  <Tbody>
-  {state.users.map((bxirzzmp, i) => (
-  <Tr key={i}>
-  <Td>
-  {bxirzzmp.id}
-</Td>
-  <Td>
-  {bxirzzmp.user_name}
-</Td>
-  <Td>
-  {bxirzzmp.user_email}
-</Td>
-  <Th>
-  <CloseIcon onClick={(_e) => addEvents([Event("state.db_delUser", {id:bxirzzmp.id})], (_e))} sx={{"colorScheme": "teal"}}/>
-</Th>
-</Tr>
-))}
-</Tbody>
-</Table>
-</TableContainer>
-</VStack>
+  {isTrue((asslujle.home_team_score > asslujle.visitor_team_score)) ? (
+  <Fragment>
+  <HStack>
+  <StarIcon/>
+  <Text sx={{"color": "green", "fontWeight": "bold"}}>
+  {`${asslujle.home_team_score} - ${asslujle.visitor_team_score}`}
+</Text>
+</HStack>
+</Fragment>
+) : (
+  <Fragment>
+  <HStack>
+  <Text sx={{"color": "green", "fontWeight": "bold"}}>
+  {`${asslujle.home_team_score} - ${asslujle.visitor_team_score}`}
+</Text>
+  <StarIcon/>
+</HStack>
 </Fragment>
 )}
 </Fragment>
-</DrawerBody>
-  <DrawerFooter>
-  <Button onClick={(_e) => addEvents([Event("state.right", {})], (_e))}>
-  {`Close`}
-</Button>
-</DrawerFooter>
-</DrawerContent>
-</DrawerOverlay>
-</Drawer>
-</Box>
-</HStack>
-  <Divider sx={{"marginBottom": "1em", "marginTop": "0.5em"}}/>
-  <VStack>
-  <Heading>
-  {`Registrate`}
-</Heading>
-  <Divider sx={{"marginBottom": "1em", "marginTop": "0.5em"}}/>
-  <Box as={`form`} onSubmit={(_e0) => addEvents([Event("state.db_addUser", {user_data:{"check": getRefValue(ref_check), "username": getRefValue(ref_username), "email": getRefValue(ref_email), "switch": getRefValue(ref_switch)}})], (_e0))} sx={{"resetOnSubmit": true}}>
-  <VStack>
-  <Input id={`username`} isRequired={true} placeholder={`User`} ref={ref_username} sx={{"color": "black"}} type={`text`}/>
-  <Input id={`email`} isRequired={true} placeholder={`Email`} ref={ref_email} sx={{"color": "black"}} type={`text`}/>
+)}
+</Fragment>
+</CardBody>
+  <CardFooter>
   <HStack>
-  <Checkbox id={`check`} ref={ref_check}>
-  {`Checked`}
-</Checkbox>
-  <Switch id={`switch`} ref={ref_switch}>
-  {`Switched`}
-</Switch>
+  <Image align={`center`} htmlHeight={`6em`} htmlWidth={`6em`} src={`/teams/court.ico`}/>
 </HStack>
-  <Button type={`submit`}>
-  {`Submit`}
-</Button>
+</CardFooter>
+</Card>
+</WrapItem>
+))}
+</Wrap>
 </VStack>
-</Box>
-</VStack>
+</Center>
   <Divider sx={{"marginBottom": "1em", "marginTop": "0.5em"}}/>
   <VStack sx={{"width": "100%", "marginTop": "2em", "padding": "2em"}}>
   <Text as={`b`} sx={{"fontStyle": "italic"}}>
@@ -191,11 +183,12 @@ export default function Component() {
 </Text>
 </VStack>
 </Box>
+</Box>
   <NextHead>
   <title>
-  {`Reflex App`}
+  {`dataJS | Where amazing happens`}
 </title>
-  <meta content={`A Reflex app.`} name={`description`}/>
+  <meta content={`dataJS | Where amazing happens`} name={`description`}/>
   <meta content={`favicon.ico`} property={`og:image`}/>
 </NextHead>
 </Fragment>

@@ -33,7 +33,6 @@ BASE_STYLE = {
         "margin_bottom": "1em",
         "margin_top": "0.5em",
     },
-    
     rx.Image: {
         "height":f"{Image.ICO.value}",
         "width":f"{Image.ICO.value}",

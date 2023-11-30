@@ -4,6 +4,8 @@ from rxconfig import config
 import reflex as rx
 from NBA_API.styles.color import Colors as Color
 from NBA_API.styles.styles import Size as Size
+from NBA_API.styles.styles import Image as Image
+from NBA_API.styles.font import Fonts as Font
 import NBA_API.styles.styles as styles
 from NBA_API.components.header import header
 from NBA_API.components.footer import footer
@@ -17,13 +19,13 @@ docs_url = "https://reflex.dev/docs/getting-started/introduction"
 filename = f"{config.app_name}/{config.app_name}.py"
 
 
-
+"""https://www.stickpng.com/es/img/download/5b26a2438f68598d6f5a4df5"""
 @rx.page()
 def nba() -> rx.Component:
     return rx.box(
-        header(),
         rx.center(
             rx.vstack(
+                rx.divider(),
                 jornada(),
                 rx.divider(),
                 stats_matches(),
@@ -38,7 +40,7 @@ def nba() -> rx.Component:
     )
 
 @rx.page()
-def index() -> rx.Component:
+def register() -> rx.Component:
     return rx.box(
         header(),
         #spline(),
@@ -56,7 +58,63 @@ def index() -> rx.Component:
         rx.divider(),
         footer()
     )
-
+@rx.page(
+    title="dataJS | Where amazing happens",
+    description="dataJS | Where amazing happens"
+)
+def index() -> rx.Component:
+    return rx.box(
+        header(),
+        rx.center(
+            rx.vstack(
+                rx.vstack(
+                    rx.image(src="/nba.ico"),
+                    rx.heading(
+                        "WORK IN PROGRESS...",
+                        color = "white",
+                        font_family= Font.TITLE.value,
+                        font_size = Size.BIG.value,
+                        border_radius="md",
+                        bg="black"
+                    ),
+                    rx.progress(
+                        is_indeterminate=True,
+                        color_scheme="yellow",
+                        width = "100%"
+                    ),
+                    justify="center",
+                    margin = Size.BIG.value,
+                    padding = Size.BIG.value
+                ),
+            rx.responsive_grid(
+                    rx.foreach(
+                        list(range(1,31)),
+                        lambda id:
+                        rx.box(
+                            rx.center(
+                                rx.image(
+                                src=f"/teams/{id}.ico",
+                                height=f"{Image.ICO.value}",
+                                width=f"{Image.ICO.value}",
+                                border_radius=f"{Size.DEFAULT.value} {Size.DEFAULT.value} {Size.DEFAULT.value} {Size.DEFAULT.value} ",
+                                border= f"{Size.XSMALL.value} solid {Color.SEPARATOR.value}",
+                                box_shadow="lg",
+                                bg="lightgreen",
+                                ),
+                            ),
+                            max_width = "100%"
+                        )
+                    ),
+                    spacing = Size.XSMALL.value,
+                    columns = [2,3,4,5,6]
+                ),
+                max_width = "80%",
+                justify = "center",
+                margin_bottom = Size.BIG.value
+            )
+        ),
+        nba(),
+    )
 # Add state and page to the app. 
 app = rx.App(style=styles.BASE_STYLE)
 

@@ -3,8 +3,7 @@ import { useRouter } from "next/router"
 import { Event, getAllLocalStorageItems, getRefValue, getRefValues, isTrue, preventDefault, refs, set_val, spreadArraysOrObjects, uploadFiles, useEventLoop } from "/utils/state"
 import { EventLoopContext, initialEvents, StateContext } from "/utils/context.js"
 import "focus-visible/dist/focus-visible"
-import { Box, Card, CardBody, CardFooter, CardHeader, Center, Divider, Flex, Heading, HStack, Image, Input, Link, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, Spacer, Text, useColorMode, VStack, Wrap, WrapItem } from "@chakra-ui/react"
-import NextLink from "next/link"
+import { Box, Card, CardBody, CardFooter, CardHeader, Center, Divider, Flex, Heading, HStack, Image, Input, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, Spacer, Text, useColorMode, VStack, Wrap, WrapItem } from "@chakra-ui/react"
 import { ArrowBackIcon, ArrowForwardIcon, StarIcon } from "@chakra-ui/icons"
 import NextHead from "next/head"
 
@@ -64,20 +63,9 @@ export default function Component() {
 )}
 </Fragment>
   <Box>
-  <HStack alignItems={`left`} sx={{"paddingX": "1em", "paddingY": "0.5em", "top": "0", "width": "100%", "position": "sticky", "zIndex": "4", "height": "5%", "borderBottom": "0.25em solid white", "bgImage": "/background/background.jpg"}}>
-  <Link as={NextLink} href={`/`}>
-  <Text>
-  <Text as={`span`} sx={{"fontStyle": "italic"}}>
-  {`data`}
-</Text>
-  <Text as={`span`} sx={{"fontWeight": "bold"}}>
-  {`JS`}
-</Text>
-</Text>
-</Link>
-</HStack>
   <Center>
   <VStack alignItems={`center`} spacing={`2em`} sx={{"marginTop": "0px", "width": "70%"}}>
+  <Divider sx={{"marginBottom": "1em", "marginTop": "0.5em"}}/>
   <VStack sx={{"marginTop": "2em", "color": "white"}}>
   <HStack sx={{"borderRadius": "md", "bg": "black"}}>
   <Center>
@@ -93,36 +81,36 @@ export default function Component() {
 </VStack>
   <Divider sx={{"marginBottom": "1em", "marginTop": "0.5em"}}/>
   <Wrap justify={`center`} spacing={`3`}>
-  {state.lista_partidos_perDay.map((kbsiolpf, i) => (
+  {state.lista_partidos_perDay.map((uoatmyey, i) => (
   <WrapItem key={i}>
   <Card sx={{"alignItems": "center", "width": "100%", "bgImage": "/background/match_box.jpg", "backgroundSize": "cover", "backgroundPosition": "center", "backgroundRepeat": "no_repeat", "backgroundColor": "rgba(0, 0, 0, 0.7)", "border": "0.25em solid white"}}>
   <CardHeader>
   <Flex sx={{"width": "100%"}}>
-  <Image src={`/teams/${kbsiolpf.home_team.id}.ico`} sx={{"height": "6em", "width": "6em", "borderRadius": "1em 1em 1em 1em ", "border": "0.25em solid white", "boxShadow": "lg", "bg": "black", "maxHeight": "40%", "maxWidth": "40%"}}/>
+  <Image src={`/teams/${uoatmyey.home_team.id}.ico`} sx={{"height": "6em", "width": "6em", "borderRadius": "1em 1em 1em 1em ", "border": "0.25em solid white", "boxShadow": "lg", "bg": "black", "maxHeight": "40%", "maxWidth": "40%"}}/>
   <Spacer/>
   <Heading size={`1em`}>
-  {`${kbsiolpf.home_team.abbreviation} vs ${kbsiolpf.visitor_team.abbreviation}`}
+  {`${uoatmyey.home_team.abbreviation} vs ${uoatmyey.visitor_team.abbreviation}`}
 </Heading>
   <Spacer/>
-  <Image src={`/teams/${kbsiolpf.visitor_team.id}.ico`} sx={{"height": "6em", "width": "6em", "borderRadius": "1em 1em 1em 1em ", "border": "0.25em solid white", "boxShadow": "lg", "bg": "black", "maxHeight": "40%", "maxWidth": "40%"}}/>
+  <Image src={`/teams/${uoatmyey.visitor_team.id}.ico`} sx={{"height": "6em", "width": "6em", "borderRadius": "1em 1em 1em 1em ", "border": "0.25em solid white", "boxShadow": "lg", "bg": "black", "maxHeight": "40%", "maxWidth": "40%"}}/>
 </Flex>
 </CardHeader>
   <CardBody>
   <Fragment>
-  {isTrue((kbsiolpf.period === 0)) ? (
+  {isTrue((uoatmyey.period === 0)) ? (
   <Fragment>
   <Text sx={{"color": "red"}}>
-  {kbsiolpf.status}
+  {uoatmyey.status}
 </Text>
 </Fragment>
 ) : (
   <Fragment>
-  {isTrue((kbsiolpf.home_team_score > kbsiolpf.visitor_team_score)) ? (
+  {isTrue((uoatmyey.home_team_score > uoatmyey.visitor_team_score)) ? (
   <Fragment>
   <HStack>
   <StarIcon/>
   <Text sx={{"color": "green", "fontWeight": "bold"}}>
-  {`${kbsiolpf.home_team_score} - ${kbsiolpf.visitor_team_score}`}
+  {`${uoatmyey.home_team_score} - ${uoatmyey.visitor_team_score}`}
 </Text>
 </HStack>
 </Fragment>
@@ -130,7 +118,7 @@ export default function Component() {
   <Fragment>
   <HStack>
   <Text sx={{"color": "green", "fontWeight": "bold"}}>
-  {`${kbsiolpf.home_team_score} - ${kbsiolpf.visitor_team_score}`}
+  {`${uoatmyey.home_team_score} - ${uoatmyey.visitor_team_score}`}
 </Text>
   <StarIcon/>
 </HStack>
