@@ -3,7 +3,7 @@ import { useRouter } from "next/router"
 import { Event, getAllLocalStorageItems, getRefValue, getRefValues, isTrue, preventDefault, refs, set_val, spreadArraysOrObjects, uploadFiles, useEventLoop } from "/utils/state"
 import { EventLoopContext, initialEvents, StateContext } from "/utils/context.js"
 import "focus-visible/dist/focus-visible"
-import { Box, Button, Checkbox, Divider, Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Heading, HStack, Image, Input, Link, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, Switch, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, useColorMode, VStack } from "@chakra-ui/react"
+import { Box, Button, Checkbox, Divider, Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Heading, HStack, Image, Input, Link, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, Spacer, Switch, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, useColorMode, VStack } from "@chakra-ui/react"
 import NextLink from "next/link"
 import { CloseIcon } from "@chakra-ui/icons"
 import NextHead from "next/head"
@@ -35,9 +35,9 @@ export default function Component() {
     }
   }, [router])
 
-  const ref_username = useRef(null); refs['ref_username'] = ref_username;
   const ref_switch = useRef(null); refs['ref_switch'] = ref_switch;
   const ref_email = useRef(null); refs['ref_email'] = ref_email;
+  const ref_username = useRef(null); refs['ref_username'] = ref_username;
   const ref_check = useRef(null); refs['ref_check'] = ref_check;
 
   return (
@@ -68,7 +68,7 @@ export default function Component() {
 )}
 </Fragment>
   <Box>
-  <HStack alignItems={`left`} sx={{"paddingX": "1em", "paddingY": "0.5em", "top": "0", "width": "100%", "position": "sticky", "zIndex": "4", "height": "5%", "borderBottom": "0.25em solid white", "bgImage": "/background/background.jpg"}}>
+  <HStack sx={{"paddingX": "1em", "paddingY": "0.5em", "top": "0", "width": "100%", "position": "sticky", "zIndex": "4", "height": "5%", "borderBottom": "0.25em solid white", "bgImage": "/background/background.jpg"}}>
   <Link as={NextLink} href={`/`}>
   <Text>
   <Text as={`span`} sx={{"fontStyle": "italic"}}>
@@ -79,14 +79,26 @@ export default function Component() {
 </Text>
 </Text>
 </Link>
+  <Spacer/>
+  <HStack>
+  <Link as={NextLink} href={`https://www.linkedin.com/in/santiagommulaslopez/`} isExternal={true}>
+  <Image src={`linkedin.svg`} sx={{"height": "2em"}}/>
+</Link>
+  <Link as={NextLink} href={`https://github.com/santi55`} isExternal={true}>
+  <Image src={`github.svg`} sx={{"height": "2em"}}/>
+</Link>
+  <Link as={NextLink} href={`mailto:santimulas24@gmail.com`} isExternal={true}>
+  <Image src={`mail.svg`} sx={{"height": "2em"}}/>
+</Link>
+</HStack>
 </HStack>
   <HStack justify={`center`} sx={{"margin": "0.8em"}}>
   <Link as={NextLink} href={`/nba`}>
-  <Image src={`/nba.ico`} sx={{"height": "6em", "width": "6em", "borderRadius": "1em 1em 1em 1em ", "border": "0.25em solid white", "boxShadow": "lg", "bg": "black", "max:height": "60%", "maxWidth": "60%"}}/>
+  <Image src={`/nba.ico`}/>
 </Link>
   <Box>
   <Link as={``} onClick={(_e) => addEvents([Event("state.right", {})], (_e))}>
-  <Image src={`logo.ico`} sx={{"bg": "white", "height": "6em", "width": "6em", "borderRadius": "1em 1em 1em 1em ", "border": "0.25em solid white", "boxShadow": "lg", "max:height": "60%", "maxWidth": "60%"}}/>
+  <Image src={`logo.ico`} sx={{"bg": "white"}}/>
 </Link>
   <Drawer isOpen={state.show_right}>
   <DrawerOverlay>
@@ -123,19 +135,19 @@ export default function Component() {
 </Tr>
 </Thead>
   <Tbody>
-  {state.users.map((ijkywpsa, i) => (
+  {state.users.map((whyxuodv, i) => (
   <Tr key={i}>
   <Td>
-  {ijkywpsa.id}
+  {whyxuodv.id}
 </Td>
   <Td>
-  {ijkywpsa.user_name}
+  {whyxuodv.user_name}
 </Td>
   <Td>
-  {ijkywpsa.user_email}
+  {whyxuodv.user_email}
 </Td>
   <Th>
-  <CloseIcon onClick={(_e) => addEvents([Event("state.db_delUser", {id:ijkywpsa.id})], (_e))} sx={{"colorScheme": "teal"}}/>
+  <CloseIcon onClick={(_e) => addEvents([Event("state.db_delUser", {id:whyxuodv.id})], (_e))} sx={{"colorScheme": "teal"}}/>
 </Th>
 </Tr>
 ))}
@@ -163,7 +175,7 @@ export default function Component() {
   {`Registrate`}
 </Heading>
   <Divider sx={{"marginBottom": "1em", "marginTop": "0.5em"}}/>
-  <Box as={`form`} onSubmit={(_e0) => addEvents([Event("state.db_addUser", {user_data:{"check": getRefValue(ref_check), "username": getRefValue(ref_username), "switch": getRefValue(ref_switch), "email": getRefValue(ref_email)}})], (_e0))} sx={{"resetOnSubmit": true}}>
+  <Box as={`form`} onSubmit={(_e0) => addEvents([Event("state.db_addUser", {user_data:{"check": getRefValue(ref_check), "email": getRefValue(ref_email), "username": getRefValue(ref_username), "switch": getRefValue(ref_switch)}})], (_e0))} sx={{"resetOnSubmit": true}}>
   <VStack>
   <Input id={`username`} isRequired={true} placeholder={`User`} ref={ref_username} sx={{"color": "black"}} type={`text`}/>
   <Input id={`email`} isRequired={true} placeholder={`Email`} ref={ref_email} sx={{"color": "black"}} type={`text`}/>

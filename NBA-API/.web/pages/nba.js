@@ -81,36 +81,36 @@ export default function Component() {
 </VStack>
   <Divider sx={{"marginBottom": "1em", "marginTop": "0.5em"}}/>
   <Wrap justify={`center`} spacing={`3`}>
-  {state.lista_partidos_perDay.map((uoatmyey, i) => (
+  {state.lista_partidos_perDay.map((ilqcvdga, i) => (
   <WrapItem key={i}>
   <Card sx={{"alignItems": "center", "width": "100%", "bgImage": "/background/match_box.jpg", "backgroundSize": "cover", "backgroundPosition": "center", "backgroundRepeat": "no_repeat", "backgroundColor": "rgba(0, 0, 0, 0.7)", "border": "0.25em solid white"}}>
   <CardHeader>
   <Flex sx={{"width": "100%"}}>
-  <Image src={`/teams/${uoatmyey.home_team.id}.ico`} sx={{"height": "6em", "width": "6em", "borderRadius": "1em 1em 1em 1em ", "border": "0.25em solid white", "boxShadow": "lg", "bg": "black", "maxHeight": "40%", "maxWidth": "40%"}}/>
+  <Image src={`/teams/${ilqcvdga.home_team.id}.ico`} sx={{"height": "6em", "width": "6em", "borderRadius": "1em 1em 1em 1em ", "border": "0.25em solid white", "boxShadow": "lg", "bg": "black", "maxHeight": "40%", "maxWidth": "40%"}}/>
   <Spacer/>
   <Heading size={`1em`}>
-  {`${uoatmyey.home_team.abbreviation} vs ${uoatmyey.visitor_team.abbreviation}`}
+  {`${ilqcvdga.home_team.abbreviation} vs ${ilqcvdga.visitor_team.abbreviation}`}
 </Heading>
   <Spacer/>
-  <Image src={`/teams/${uoatmyey.visitor_team.id}.ico`} sx={{"height": "6em", "width": "6em", "borderRadius": "1em 1em 1em 1em ", "border": "0.25em solid white", "boxShadow": "lg", "bg": "black", "maxHeight": "40%", "maxWidth": "40%"}}/>
+  <Image src={`/teams/${ilqcvdga.visitor_team.id}.ico`} sx={{"height": "6em", "width": "6em", "borderRadius": "1em 1em 1em 1em ", "border": "0.25em solid white", "boxShadow": "lg", "bg": "black", "maxHeight": "40%", "maxWidth": "40%"}}/>
 </Flex>
 </CardHeader>
   <CardBody>
   <Fragment>
-  {isTrue((uoatmyey.period === 0)) ? (
+  {isTrue((ilqcvdga.period === 0)) ? (
   <Fragment>
   <Text sx={{"color": "red"}}>
-  {uoatmyey.status}
+  {ilqcvdga.status}
 </Text>
 </Fragment>
 ) : (
   <Fragment>
-  {isTrue((uoatmyey.home_team_score > uoatmyey.visitor_team_score)) ? (
+  {isTrue((ilqcvdga.home_team_score > ilqcvdga.visitor_team_score)) ? (
   <Fragment>
   <HStack>
   <StarIcon/>
   <Text sx={{"color": "green", "fontWeight": "bold"}}>
-  {`${uoatmyey.home_team_score} - ${uoatmyey.visitor_team_score}`}
+  {`${ilqcvdga.home_team_score} - ${ilqcvdga.visitor_team_score}`}
 </Text>
 </HStack>
 </Fragment>
@@ -118,7 +118,7 @@ export default function Component() {
   <Fragment>
   <HStack>
   <Text sx={{"color": "green", "fontWeight": "bold"}}>
-  {`${uoatmyey.home_team_score} - ${uoatmyey.visitor_team_score}`}
+  {`${ilqcvdga.home_team_score} - ${ilqcvdga.visitor_team_score}`}
 </Text>
   <StarIcon/>
 </HStack>

@@ -64,7 +64,7 @@ export default function Component() {
 )}
 </Fragment>
   <Box>
-  <HStack alignItems={`left`} sx={{"paddingX": "1em", "paddingY": "0.5em", "top": "0", "width": "100%", "position": "sticky", "zIndex": "4", "height": "5%", "borderBottom": "0.25em solid white", "bgImage": "/background/background.jpg"}}>
+  <HStack sx={{"paddingX": "1em", "paddingY": "0.5em", "top": "0", "width": "100%", "position": "sticky", "zIndex": "4", "height": "5%", "borderBottom": "0.25em solid white", "bgImage": "/background/background.jpg"}}>
   <Link as={NextLink} href={`/`}>
   <Text>
   <Text as={`span`} sx={{"fontStyle": "italic"}}>
@@ -75,21 +75,33 @@ export default function Component() {
 </Text>
 </Text>
 </Link>
+  <Spacer/>
+  <HStack>
+  <Link as={NextLink} href={`https://www.linkedin.com/in/santiagommulaslopez/`} isExternal={true}>
+  <Image src={`linkedin.svg`} sx={{"height": "2em"}}/>
+</Link>
+  <Link as={NextLink} href={`https://github.com/santi55`} isExternal={true}>
+  <Image src={`github.svg`} sx={{"height": "2em"}}/>
+</Link>
+  <Link as={NextLink} href={`mailto:santimulas24@gmail.com`} isExternal={true}>
+  <Image src={`mail.svg`} sx={{"height": "2em"}}/>
+</Link>
+</HStack>
 </HStack>
   <Center>
   <VStack justify={`center`} sx={{"maxWidth": "80%", "marginBottom": "2em"}}>
   <VStack justify={`center`} sx={{"margin": "2em", "padding": "2em"}}>
-  <Image src={`/nba.ico`} sx={{"height": "6em", "width": "6em", "borderRadius": "1em 1em 1em 1em ", "border": "0.25em solid white", "boxShadow": "lg", "bg": "black", "max:height": "60%", "maxWidth": "60%"}}/>
+  <Image src={`/nba.ico`}/>
   <Heading sx={{"color": "white", "fontFamily": "Noto-Serif-Old-Uyghur", "fontSize": "2em", "borderRadius": "md", "bg": "black"}}>
   {`WORK IN PROGRESS...`}
 </Heading>
   <Progress colorScheme={`yellow`} isIndeterminate={true} sx={{"width": "100%"}}/>
 </VStack>
   <SimpleGrid columns={[2, 3, 4, 5, 6]} spacing={`0.25em`}>
-  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30].map((ccohzozo, i) => (
+  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30].map((rtlyyzje, i) => (
   <Box key={i} sx={{"maxWidth": "100%"}}>
   <Center>
-  <Image src={`/teams/${ccohzozo}.ico`} sx={{"height": "6em", "width": "6em", "borderRadius": "1em 1em 1em 1em ", "border": "0.25em solid white", "boxShadow": "lg", "bg": "lightgreen"}}/>
+  <Image src={`/teams/${rtlyyzje}.ico`} sx={{"height": "6em", "width": "6em", "borderRadius": "1em 1em 1em 1em ", "border": "0.25em solid white", "boxShadow": "lg", "bg": "lightgreen"}}/>
 </Center>
 </Box>
 ))}
@@ -115,36 +127,36 @@ export default function Component() {
 </VStack>
   <Divider sx={{"marginBottom": "1em", "marginTop": "0.5em"}}/>
   <Wrap justify={`center`} spacing={`3`}>
-  {state.lista_partidos_perDay.map((asslujle, i) => (
+  {state.lista_partidos_perDay.map((ngmafbax, i) => (
   <WrapItem key={i}>
   <Card sx={{"alignItems": "center", "width": "100%", "bgImage": "/background/match_box.jpg", "backgroundSize": "cover", "backgroundPosition": "center", "backgroundRepeat": "no_repeat", "backgroundColor": "rgba(0, 0, 0, 0.7)", "border": "0.25em solid white"}}>
   <CardHeader>
   <Flex sx={{"width": "100%"}}>
-  <Image src={`/teams/${asslujle.home_team.id}.ico`} sx={{"height": "6em", "width": "6em", "borderRadius": "1em 1em 1em 1em ", "border": "0.25em solid white", "boxShadow": "lg", "bg": "black", "maxHeight": "40%", "maxWidth": "40%"}}/>
+  <Image src={`/teams/${ngmafbax.home_team.id}.ico`} sx={{"height": "6em", "width": "6em", "borderRadius": "1em 1em 1em 1em ", "border": "0.25em solid white", "boxShadow": "lg", "bg": "black", "maxHeight": "40%", "maxWidth": "40%"}}/>
   <Spacer/>
   <Heading size={`1em`}>
-  {`${asslujle.home_team.abbreviation} vs ${asslujle.visitor_team.abbreviation}`}
+  {`${ngmafbax.home_team.abbreviation} vs ${ngmafbax.visitor_team.abbreviation}`}
 </Heading>
   <Spacer/>
-  <Image src={`/teams/${asslujle.visitor_team.id}.ico`} sx={{"height": "6em", "width": "6em", "borderRadius": "1em 1em 1em 1em ", "border": "0.25em solid white", "boxShadow": "lg", "bg": "black", "maxHeight": "40%", "maxWidth": "40%"}}/>
+  <Image src={`/teams/${ngmafbax.visitor_team.id}.ico`} sx={{"height": "6em", "width": "6em", "borderRadius": "1em 1em 1em 1em ", "border": "0.25em solid white", "boxShadow": "lg", "bg": "black", "maxHeight": "40%", "maxWidth": "40%"}}/>
 </Flex>
 </CardHeader>
   <CardBody>
   <Fragment>
-  {isTrue((asslujle.period === 0)) ? (
+  {isTrue((ngmafbax.period === 0)) ? (
   <Fragment>
   <Text sx={{"color": "red"}}>
-  {asslujle.status}
+  {ngmafbax.status}
 </Text>
 </Fragment>
 ) : (
   <Fragment>
-  {isTrue((asslujle.home_team_score > asslujle.visitor_team_score)) ? (
+  {isTrue((ngmafbax.home_team_score > ngmafbax.visitor_team_score)) ? (
   <Fragment>
   <HStack>
   <StarIcon/>
   <Text sx={{"color": "green", "fontWeight": "bold"}}>
-  {`${asslujle.home_team_score} - ${asslujle.visitor_team_score}`}
+  {`${ngmafbax.home_team_score} - ${ngmafbax.visitor_team_score}`}
 </Text>
 </HStack>
 </Fragment>
@@ -152,7 +164,7 @@ export default function Component() {
   <Fragment>
   <HStack>
   <Text sx={{"color": "green", "fontWeight": "bold"}}>
-  {`${asslujle.home_team_score} - ${asslujle.visitor_team_score}`}
+  {`${ngmafbax.home_team_score} - ${ngmafbax.visitor_team_score}`}
 </Text>
   <StarIcon/>
 </HStack>
