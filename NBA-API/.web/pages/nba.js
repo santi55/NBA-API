@@ -1,5 +1,5 @@
 import { Fragment } from "react"
-import { Arrowbackicon_6bcaee27016f550eb53aa0b7cfea62b6, Arrowforwardicon_08b652d00f4e93e858dc3ae224737c8a, Fragment_fd0e7cb8f9fb4669a6805377d925fba0, Heading_8490ff7903bc070432b0d8a4c5665837, Input_a4ce3bf717fd9fe42a90521059592792, Simplegrid_a981def344368d8b64140429f712e0cb } from "/utils/stateful_components"
+import { Arrowbackicon_6bcaee27016f550eb53aa0b7cfea62b6, Arrowforwardicon_08b652d00f4e93e858dc3ae224737c8a, Fragment_fd0e7cb8f9fb4669a6805377d925fba0, Heading_8490ff7903bc070432b0d8a4c5665837, Input_a4ce3bf717fd9fe42a90521059592792, Simplegrid_c7df857dc1a1f67b9392357ad09b22d1 } from "/utils/stateful_components"
 import { Box, Center, Divider, HStack, Spacer, Text, VStack } from "@chakra-ui/react"
 import "focus-visible/dist/focus-visible"
 import NextHead from "next/head"
@@ -27,7 +27,7 @@ export default function Component() {
   <Input_a4ce3bf717fd9fe42a90521059592792/>
 </VStack>
   <Divider sx={{"marginBottom": "1em", "marginTop": "0.5em"}}/>
-  <Simplegrid_a981def344368d8b64140429f712e0cb/>
+  <Simplegrid_c7df857dc1a1f67b9392357ad09b22d1/>
 </VStack>
 </Center>
   <Divider sx={{"marginBottom": "1em", "marginTop": "0.5em"}}/>
