@@ -31,8 +31,8 @@ def jornada():
             rx.hstack(
                 rx.center(
                     rx.icon(
-                        tag = "arrow_back",
-                            on_click=State.decrementDay()
+                        tag = "star",
+                           # on_click=State.decrementDay()
                     ),
                     rx.spacer(),
                     rx.heading(
@@ -42,8 +42,8 @@ def jornada():
                     font_size = Size.BIG.value
                     ),
                     rx.icon(
-                        tag = "arrow_forward",
-                        on_click=State.incrementDay()
+                        tag = "star",
+                        #on_click=State.incrementDay()
                     )
                 ),
                 border_radius="md",
@@ -57,7 +57,7 @@ def jornada():
             error_border_color="red",
             width="50%",
             default_value=str(State.date),
-            on_change=State.set_date,
+            #on_change=State.set_date,
         ),
         margin_top=Size.BIG.value,
         color="white",

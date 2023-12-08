@@ -91,26 +91,33 @@ class State(rx.State):
     
 
     @rx.var
-    def lista_partidos_perDay(self) -> List[Game]:
+    def lista_partidos_perDay(self) -> List[Game]: 
         matchs_day : List[Game] = []
-        list_matchs = requests.get(self.link_match).json()['data']
-        for m in list_matchs:
-            game = Game(
-                id=m["id"],
-                date=m["date"],
-                home_team=m["home_team"],
-                home_team_score=m["home_team_score"],
-                period=m["period"],
-                postseason=m["postseason"],
-                season=m["season"],
-                status=m["status"],
-                time=m["time"],
-                visitor_team=m["visitor_team"],
-                visitor_team_score=m["visitor_team_score"]            
-            )
-            matchs_day.append(game)
+        try:
+
+            list_matchs = requests.get(self.link_match).json()['data']
+            for m in list_matchs:
+                game = Game(
+                    id=m["id"],
+                    date=m["date"],
+                    home_team=m["home_team"],
+                    home_team_score=m["home_team_score"],
+                    period=m["period"],
+                    postseason=m["postseason"],
+                    season=m["season"],
+                    status=m["status"],
+                    time=m["time"],
+                    visitor_team=m["visitor_team"],
+                    visitor_team_score=m["visitor_team_score"]            
+                )
+                matchs_day.append(game)
+            
+            return matchs_day
         
-        return matchs_day
+        except:
+            
+            return []
+       
     
         
     def incrementDay(self):
