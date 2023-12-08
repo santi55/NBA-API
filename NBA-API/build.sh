@@ -1,4 +1,4 @@
-source C:/Users/MERCEDES/Documents/SANTI/reflex/.venv/Scripts/activate
+source .venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
 reflex init
