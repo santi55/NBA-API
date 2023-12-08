@@ -1,68 +1,33 @@
-import { Fragment, useContext, useEffect, useRef, useState } from "react"
-import { useRouter } from "next/router"
-import { Event, getAllLocalStorageItems, getRefValue, getRefValues, isTrue, preventDefault, refs, set_val, spreadArraysOrObjects, uploadFiles, useEventLoop } from "/utils/state"
-import { EventLoopContext, initialEvents, StateContext } from "/utils/context.js"
-import "focus-visible/dist/focus-visible"
-import { Box, Card, CardBody, CardFooter, CardHeader, Center, Divider, Flex, Heading, HStack, Image, Input, Link, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, Progress, SimpleGrid, Spacer, Text, useColorMode, VStack, Wrap, WrapItem } from "@chakra-ui/react"
+import { Fragment } from "react"
+import { Arrowbackicon_6bcaee27016f550eb53aa0b7cfea62b6, Arrowforwardicon_08b652d00f4e93e858dc3ae224737c8a, Fragment_fd0e7cb8f9fb4669a6805377d925fba0, Heading_8490ff7903bc070432b0d8a4c5665837, Input_a4ce3bf717fd9fe42a90521059592792, Simplegrid_a981def344368d8b64140429f712e0cb } from "/utils/stateful_components"
+import { Box, Center, Divider, Heading, HStack, Image, Link, Progress, SimpleGrid, Spacer, Text, VStack } from "@chakra-ui/react"
 import NextLink from "next/link"
-import { ArrowBackIcon, ArrowForwardIcon, StarIcon } from "@chakra-ui/icons"
+import "focus-visible/dist/focus-visible"
 import NextHead from "next/head"
 
 
 
-export default function Component() {
-  const state = useContext(StateContext)
-  const router = useRouter()
-  const { colorMode, toggleColorMode } = useColorMode()
-  const focusRef = useRef();
-  
-  // Main event loop.
-  const [addEvents, connectError] = useContext(EventLoopContext)
-
-  // Set focus to the specified element.
-  useEffect(() => {
-    if (focusRef.current) {
-      focusRef.current.focus();
-    }
-  })
-
-  // Route after the initial page hydration.
-  useEffect(() => {
-    const change_complete = () => addEvents(initialEvents.map((e) => ({...e})))
-    router.events.on('routeChangeComplete', change_complete)
-    return () => {
-      router.events.off('routeChangeComplete', change_complete)
-    }
-  }, [router])
+export function Simplegrid_7c31ac4ad59250c1b3eb3fde20ee6ef7 () {
 
 
   return (
+    <SimpleGrid columns={[2, 3, 4, 5, 6]} spacing={`0.25em`}>
+  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30].map((id, index_46be25bb7e7188ab2ca77bd7b2c8b386) => (
+  <Box key={index_46be25bb7e7188ab2ca77bd7b2c8b386} sx={{"maxWidth": "100%"}}>
+  <Center>
+  <Image src={`/teams/${id}.ico`} sx={{"height": "6em", "width": "6em", "borderRadius": "1em 1em 1em 1em ", "border": "0.25em solid white", "boxShadow": "lg", "bg": "lightgreen"}}/>
+</Center>
+</Box>
+))}
+</SimpleGrid>
+  )
+}
+
+export default function Component() {
+
+  return (
     <Fragment>
-  <Fragment>
-  {isTrue(connectError !== null) ? (
-  <Fragment>
-  <Modal isOpen={connectError !== null}>
-  <ModalOverlay>
-  <ModalContent>
-  <ModalHeader>
-  {`Connection Error`}
-</ModalHeader>
-  <ModalBody>
-  <Text>
-  {`Cannot connect to server: `}
-  {(connectError !== null) ? connectError.message : ''}
-  {`. Check if server is reachable at `}
-  {`http://localhost:8000`}
-</Text>
-</ModalBody>
-</ModalContent>
-</ModalOverlay>
-</Modal>
-</Fragment>
-) : (
-  <Fragment/>
-)}
-</Fragment>
+  <Fragment_fd0e7cb8f9fb4669a6805377d925fba0/>
   <Box>
   <HStack sx={{"paddingX": "1em", "paddingY": "0.5em", "top": "0", "width": "100%", "position": "sticky", "zIndex": "4", "height": "5%", "borderBottom": "0.25em solid white", "bgImage": "/background/background.jpg"}}>
   <Link as={NextLink} href={`/`}>
@@ -92,97 +57,31 @@ export default function Component() {
   <VStack justify={`center`} sx={{"maxWidth": "80%", "marginBottom": "2em"}}>
   <VStack justify={`center`} sx={{"margin": "2em", "padding": "2em"}}>
   <Image src={`/nba.ico`}/>
-  <Heading sx={{"color": "white", "fontFamily": "Noto-Serif-Old-Uyghur", "fontSize": "2em", "borderRadius": "md", "bg": "black"}}>
+  <Heading sx={{"color": "white", "fontFamily": "Noto-Serif-Old-Uyghur", "fontSize": "sm", "borderRadius": "md", "bg": "black"}}>
   {`WORK IN PROGRESS...`}
 </Heading>
   <Progress colorScheme={`yellow`} isIndeterminate={true} sx={{"width": "100%"}}/>
 </VStack>
-  <SimpleGrid columns={[2, 3, 4, 5, 6]} spacing={`0.25em`}>
-  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30].map((rtlyyzje, i) => (
-  <Box key={i} sx={{"maxWidth": "100%"}}>
-  <Center>
-  <Image src={`/teams/${rtlyyzje}.ico`} sx={{"height": "6em", "width": "6em", "borderRadius": "1em 1em 1em 1em ", "border": "0.25em solid white", "boxShadow": "lg", "bg": "lightgreen"}}/>
-</Center>
-</Box>
-))}
-</SimpleGrid>
+  <Simplegrid_7c31ac4ad59250c1b3eb3fde20ee6ef7/>
 </VStack>
 </Center>
   <Box>
   <Center>
-  <VStack alignItems={`center`} spacing={`2em`} sx={{"marginTop": "0px", "width": "70%"}}>
+  <VStack justify={`center`} spacing={`2em`} sx={{"marginTop": "0px", "width": "70%"}}>
   <Divider sx={{"marginBottom": "1em", "marginTop": "0.5em"}}/>
   <VStack sx={{"marginTop": "2em", "color": "white"}}>
   <HStack sx={{"borderRadius": "md", "bg": "black"}}>
   <Center>
-  <ArrowBackIcon onClick={(_e) => addEvents([Event("state.decrementDay", {})], (_e))}/>
+  <Arrowbackicon_6bcaee27016f550eb53aa0b7cfea62b6/>
   <Spacer/>
-  <Heading sx={{"fontFamily": "Noto-Serif-Old-Uyghur", "fontSize": "2em"}}>
-  {state.day_clean}
-</Heading>
-  <ArrowForwardIcon onClick={(_e) => addEvents([Event("state.incrementDay", {})], (_e))}/>
+  <Heading_8490ff7903bc070432b0d8a4c5665837/>
+  <Arrowforwardicon_08b652d00f4e93e858dc3ae224737c8a/>
 </Center>
 </HStack>
-  <Input defaultValue={`{state.date}`} errorBorderColor={`red`} focusBorderColor={`orange`} onChange={(_e0) => addEvents([Event("state.set_date", {value:_e0.target.value})], (_e0))} size={`xs`} sx={{"borderColor": "black", "width": "50%"}} type={`date`}/>
+  <Input_a4ce3bf717fd9fe42a90521059592792/>
 </VStack>
   <Divider sx={{"marginBottom": "1em", "marginTop": "0.5em"}}/>
-  <Wrap justify={`center`} spacing={`3`}>
-  {state.lista_partidos_perDay.map((ngmafbax, i) => (
-  <WrapItem key={i}>
-  <Card sx={{"alignItems": "center", "width": "100%", "bgImage": "/background/match_box.jpg", "backgroundSize": "cover", "backgroundPosition": "center", "backgroundRepeat": "no_repeat", "backgroundColor": "rgba(0, 0, 0, 0.7)", "border": "0.25em solid white"}}>
-  <CardHeader>
-  <Flex sx={{"width": "100%"}}>
-  <Image src={`/teams/${ngmafbax.home_team.id}.ico`} sx={{"height": "6em", "width": "6em", "borderRadius": "1em 1em 1em 1em ", "border": "0.25em solid white", "boxShadow": "lg", "bg": "black", "maxHeight": "40%", "maxWidth": "40%"}}/>
-  <Spacer/>
-  <Heading size={`1em`}>
-  {`${ngmafbax.home_team.abbreviation} vs ${ngmafbax.visitor_team.abbreviation}`}
-</Heading>
-  <Spacer/>
-  <Image src={`/teams/${ngmafbax.visitor_team.id}.ico`} sx={{"height": "6em", "width": "6em", "borderRadius": "1em 1em 1em 1em ", "border": "0.25em solid white", "boxShadow": "lg", "bg": "black", "maxHeight": "40%", "maxWidth": "40%"}}/>
-</Flex>
-</CardHeader>
-  <CardBody>
-  <Fragment>
-  {isTrue((ngmafbax.period === 0)) ? (
-  <Fragment>
-  <Text sx={{"color": "red"}}>
-  {ngmafbax.status}
-</Text>
-</Fragment>
-) : (
-  <Fragment>
-  {isTrue((ngmafbax.home_team_score > ngmafbax.visitor_team_score)) ? (
-  <Fragment>
-  <HStack>
-  <StarIcon/>
-  <Text sx={{"color": "green", "fontWeight": "bold"}}>
-  {`${ngmafbax.home_team_score} - ${ngmafbax.visitor_team_score}`}
-</Text>
-</HStack>
-</Fragment>
-) : (
-  <Fragment>
-  <HStack>
-  <Text sx={{"color": "green", "fontWeight": "bold"}}>
-  {`${ngmafbax.home_team_score} - ${ngmafbax.visitor_team_score}`}
-</Text>
-  <StarIcon/>
-</HStack>
-</Fragment>
-)}
-</Fragment>
-)}
-</Fragment>
-</CardBody>
-  <CardFooter>
-  <HStack>
-  <Image align={`center`} htmlHeight={`6em`} htmlWidth={`6em`} src={`/teams/court.ico`}/>
-</HStack>
-</CardFooter>
-</Card>
-</WrapItem>
-))}
-</Wrap>
+  <Simplegrid_a981def344368d8b64140429f712e0cb/>
 </VStack>
 </Center>
   <Divider sx={{"marginBottom": "1em", "marginTop": "0.5em"}}/>

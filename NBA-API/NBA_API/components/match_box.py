@@ -9,8 +9,7 @@ from NBA_API.state import Game
 
 def match_box(game: Game):
     
-    return rx.wrap_item(
-        rx.card(
+    return rx.card(
             rx.cond(
                 game.period == 0,
                 rx.text(game.status, color="red"),
@@ -42,7 +41,7 @@ def match_box(game: Game):
                     max_height="40%",
                     max_width="40%"),
                 rx.spacer(),
-                rx.heading(f"{game.home_team.abbreviation} vs {game.visitor_team.abbreviation}", size=Size.DEFAULT.value),
+                rx.heading(f"{game.home_team.abbreviation} vs {game.visitor_team.abbreviation}", size='sm'),
                 rx.spacer(),
                 rx.image(
                     src=f"/teams/{game.visitor_team.id}.ico",
@@ -73,4 +72,4 @@ def match_box(game: Game):
             background_color= "rgba(0, 0, 0, 0.7)",
             border=f"{Size.XSMALL.value} solid {Color.SEPARATOR.value}"
         )
-    )
+    

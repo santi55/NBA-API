@@ -1,4 +1,3 @@
-import requests
 import reflex as rx
 from NBA_API.styles.styles import Size as Size
 from NBA_API.styles.color import Colors as Color
@@ -13,13 +12,14 @@ def display_box(game: Game):
    
 #recorre todos los partidos
 def stats_matches():
-    return rx.wrap(
+    return rx.responsive_grid(
         rx.foreach(
             State.lista_partidos_perDay,
             display_box
         ),
-        spacing="3",
-        justify="center"
+        justify="center",
+        spacing = Size.XSMALL.value,
+        columns = [2,3,4]
     )
     
 def imprimeDay() -> rx.component:

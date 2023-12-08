@@ -1,72 +1,169 @@
-import { Fragment, useContext, useEffect, useRef, useState } from "react"
-import { useRouter } from "next/router"
-import { Event, getAllLocalStorageItems, getRefValue, getRefValues, isTrue, preventDefault, refs, set_val, spreadArraysOrObjects, uploadFiles, useEventLoop } from "/utils/state"
-import { EventLoopContext, initialEvents, StateContext } from "/utils/context.js"
-import "focus-visible/dist/focus-visible"
-import { Box, Button, Checkbox, Divider, Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Heading, HStack, Image, Input, Link, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, Spacer, Switch, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, useColorMode, VStack } from "@chakra-ui/react"
+import { Fragment, useCallback, useContext, useRef } from "react"
+import { Fragment_fd0e7cb8f9fb4669a6805377d925fba0 } from "/utils/stateful_components"
+import { Box, Button, Checkbox, Divider, Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Heading, HStack, Image, Input, Link, Spacer, Switch, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, VStack } from "@chakra-ui/react"
 import NextLink from "next/link"
+import "focus-visible/dist/focus-visible"
+import { EventLoopContext, StateContexts } from "/utils/context"
+import { Event, getRefValue, getRefValues, isTrue, refs, set_val } from "/utils/state"
 import { CloseIcon } from "@chakra-ui/icons"
 import NextHead from "next/head"
 
 
 
-export default function Component() {
-  const state = useContext(StateContext)
-  const router = useRouter()
-  const { colorMode, toggleColorMode } = useColorMode()
-  const focusRef = useRef();
+export function Box_9eb26c428c23978b918080c63f503b0c () {
   
-  // Main event loop.
-  const [addEvents, connectError] = useContext(EventLoopContext)
+    const handleSubmit_56841e7771bf2b11426295ca93ef7ca6 = useCallback((ev) => {
+        const $form = ev.target
+        ev.preventDefault()
+        const form_data = {...Object.fromEntries(new FormData($form).entries()), ...{"check": getRefValue(refs['ref_check']), "email": getRefValue(refs['ref_email']), "username": getRefValue(refs['ref_username']), "switch": getRefValue(refs['ref_switch'])}}
 
-  // Set focus to the specified element.
-  useEffect(() => {
-    if (focusRef.current) {
-      focusRef.current.focus();
-    }
-  })
+        addEvents([Event("state.state.db_addUser", {user_data:form_data})])
 
-  // Route after the initial page hydration.
-  useEffect(() => {
-    const change_complete = () => addEvents(initialEvents.map((e) => ({...e})))
-    router.events.on('routeChangeComplete', change_complete)
-    return () => {
-      router.events.off('routeChangeComplete', change_complete)
-    }
-  }, [router])
-
-  const ref_switch = useRef(null); refs['ref_switch'] = ref_switch;
+        if (true) {
+            $form.reset()
+        }
+    })
+    
   const ref_email = useRef(null); refs['ref_email'] = ref_email;
-  const ref_username = useRef(null); refs['ref_username'] = ref_username;
   const ref_check = useRef(null); refs['ref_check'] = ref_check;
+  const ref_switch = useRef(null); refs['ref_switch'] = ref_switch;
+  const [addEvents, connectError] = useContext(EventLoopContext);
+  const ref_username = useRef(null); refs['ref_username'] = ref_username;
+
+
+  return (
+    <Box as={`form`} onSubmit={handleSubmit_56841e7771bf2b11426295ca93ef7ca6}>
+  <VStack>
+  <Input id={`username`} isRequired={true} placeholder={`User`} ref={ref_username} sx={{"color": "black"}} type={`text`}/>
+  <Input id={`email`} isRequired={true} placeholder={`Email`} ref={ref_email} sx={{"color": "black"}} type={`text`}/>
+  <HStack>
+  <Checkbox id={`check`} ref={ref_check} value={`true`}>
+  {`Checked`}
+</Checkbox>
+  <Switch id={`switch`} ref={ref_switch} value={true}>
+  {`Switched`}
+</Switch>
+</HStack>
+  <Button type={`submit`}>
+  {`Submit`}
+</Button>
+</VStack>
+</Box>
+  )
+}
+
+export function Link_f350a2ff4b9789d2a9deda287ee1eb00 () {
+  const [addEvents, connectError] = useContext(EventLoopContext);
+
+  const on_click_ac8bdc8b0d4bac75f3381ef517169430 = useCallback((_e) => addEvents([Event("state.state.right", {})], (_e), {}), [addEvents, Event])
+
+  return (
+    <Link as={``} onClick={on_click_ac8bdc8b0d4bac75f3381ef517169430}>
+  <Image src={`logo.ico`} sx={{"bg": "white"}}/>
+</Link>
+  )
+}
+
+export function Button_e4987f3f3d0cdfccd0a2ccd9be13f575 () {
+  const [addEvents, connectError] = useContext(EventLoopContext);
+
+  const on_click_ac8bdc8b0d4bac75f3381ef517169430 = useCallback((_e) => addEvents([Event("state.state.right", {})], (_e), {}), [addEvents, Event])
+
+  return (
+    <Button onClick={on_click_ac8bdc8b0d4bac75f3381ef517169430}>
+  {`Close`}
+</Button>
+  )
+}
+
+export function Drawer_cf6729e54c183e614cac87460edea80d () {
+  const state__state = useContext(StateContexts.state__state)
+
+
+  return (
+    <Drawer isOpen={state__state.show_right}>
+  <DrawerOverlay>
+  <DrawerContent sx={{"bg": "rgba(0, 0, 0, 0.3)"}}>
+  <DrawerHeader>
+  {`Confirm`}
+</DrawerHeader>
+  <DrawerBody>
+  <Fragment_834d0e2dc87b68e5a8b54c38c04506c1/>
+</DrawerBody>
+  <DrawerFooter>
+  <Button_e4987f3f3d0cdfccd0a2ccd9be13f575/>
+</DrawerFooter>
+</DrawerContent>
+</DrawerOverlay>
+</Drawer>
+  )
+}
+
+export function Fragment_834d0e2dc87b68e5a8b54c38c04506c1 () {
+  const state__state = useContext(StateContexts.state__state)
+  const [addEvents, connectError] = useContext(EventLoopContext);
+
 
   return (
     <Fragment>
+  {isTrue((state__state.len_usuarios === 0)) ? (
   <Fragment>
-  {isTrue(connectError !== null) ? (
-  <Fragment>
-  <Modal isOpen={connectError !== null}>
-  <ModalOverlay>
-  <ModalContent>
-  <ModalHeader>
-  {`Connection Error`}
-</ModalHeader>
-  <ModalBody>
+  <VStack>
   <Text>
-  {`Cannot connect to server: `}
-  {(connectError !== null) ? connectError.message : ''}
-  {`. Check if server is reachable at `}
-  {`http://localhost:8000`}
+  {`no hay usuarios`}
 </Text>
-</ModalBody>
-</ModalContent>
-</ModalOverlay>
-</Modal>
+</VStack>
 </Fragment>
 ) : (
-  <Fragment/>
+  <Fragment>
+  <VStack>
+  <TableContainer sx={{"marginTop": "1rem"}}>
+  <Table colorScheme={`teal`} variant={`striped`}>
+  <Thead>
+  <Tr>
+  <Th>
+  {`ID`}
+</Th>
+  <Th>
+  {`Username`}
+</Th>
+  <Th>
+  {`Email`}
+</Th>
+</Tr>
+</Thead>
+  <Tbody>
+  {state__state.users.map((user, index_e1f2d3b58e8aadb9a773416c3154cd44) => (
+  <Tr key={index_e1f2d3b58e8aadb9a773416c3154cd44}>
+  <Td>
+  {user.id}
+</Td>
+  <Td>
+  {user.user_name}
+</Td>
+  <Td>
+  {user.user_email}
+</Td>
+  <Th>
+  <CloseIcon onClick={(_e) => addEvents([Event("state.state.db_delUser", {id:user.id})], (_e), {})} sx={{"colorScheme": "teal"}}/>
+</Th>
+</Tr>
+))}
+</Tbody>
+</Table>
+</TableContainer>
+</VStack>
+</Fragment>
 )}
 </Fragment>
+  )
+}
+
+export default function Component() {
+
+  return (
+    <Fragment>
+  <Fragment_fd0e7cb8f9fb4669a6805377d925fba0/>
   <Box>
   <HStack sx={{"paddingX": "1em", "paddingY": "0.5em", "top": "0", "width": "100%", "position": "sticky", "zIndex": "4", "height": "5%", "borderBottom": "0.25em solid white", "bgImage": "/background/background.jpg"}}>
   <Link as={NextLink} href={`/`}>
@@ -97,76 +194,8 @@ export default function Component() {
   <Image src={`/nba.ico`}/>
 </Link>
   <Box>
-  <Link as={``} onClick={(_e) => addEvents([Event("state.right", {})], (_e))}>
-  <Image src={`logo.ico`} sx={{"bg": "white"}}/>
-</Link>
-  <Drawer isOpen={state.show_right}>
-  <DrawerOverlay>
-  <DrawerContent sx={{"bg": "rgba(0, 0, 0, 0.3)"}}>
-  <DrawerHeader>
-  {`Confirm`}
-</DrawerHeader>
-  <DrawerBody>
-  <Fragment>
-  {isTrue((state.len_usuarios === 0)) ? (
-  <Fragment>
-  <VStack>
-  <Text>
-  {`no hay usuarios`}
-</Text>
-</VStack>
-</Fragment>
-) : (
-  <Fragment>
-  <VStack>
-  <TableContainer sx={{"marginTop": "1rem"}}>
-  <Table colorScheme={`teal`} variant={`striped`}>
-  <Thead>
-  <Tr>
-  <Th>
-  {`ID`}
-</Th>
-  <Th>
-  {`Username`}
-</Th>
-  <Th>
-  {`Email`}
-</Th>
-</Tr>
-</Thead>
-  <Tbody>
-  {state.users.map((whyxuodv, i) => (
-  <Tr key={i}>
-  <Td>
-  {whyxuodv.id}
-</Td>
-  <Td>
-  {whyxuodv.user_name}
-</Td>
-  <Td>
-  {whyxuodv.user_email}
-</Td>
-  <Th>
-  <CloseIcon onClick={(_e) => addEvents([Event("state.db_delUser", {id:whyxuodv.id})], (_e))} sx={{"colorScheme": "teal"}}/>
-</Th>
-</Tr>
-))}
-</Tbody>
-</Table>
-</TableContainer>
-</VStack>
-</Fragment>
-)}
-</Fragment>
-</DrawerBody>
-  <DrawerFooter>
-  <Button onClick={(_e) => addEvents([Event("state.right", {})], (_e))}>
-  {`Close`}
-</Button>
-</DrawerFooter>
-</DrawerContent>
-</DrawerOverlay>
-</Drawer>
+  <Link_f350a2ff4b9789d2a9deda287ee1eb00/>
+  <Drawer_cf6729e54c183e614cac87460edea80d/>
 </Box>
 </HStack>
   <Divider sx={{"marginBottom": "1em", "marginTop": "0.5em"}}/>
@@ -175,23 +204,7 @@ export default function Component() {
   {`Registrate`}
 </Heading>
   <Divider sx={{"marginBottom": "1em", "marginTop": "0.5em"}}/>
-  <Box as={`form`} onSubmit={(_e0) => addEvents([Event("state.db_addUser", {user_data:{"check": getRefValue(ref_check), "email": getRefValue(ref_email), "username": getRefValue(ref_username), "switch": getRefValue(ref_switch)}})], (_e0))} sx={{"resetOnSubmit": true}}>
-  <VStack>
-  <Input id={`username`} isRequired={true} placeholder={`User`} ref={ref_username} sx={{"color": "black"}} type={`text`}/>
-  <Input id={`email`} isRequired={true} placeholder={`Email`} ref={ref_email} sx={{"color": "black"}} type={`text`}/>
-  <HStack>
-  <Checkbox id={`check`} ref={ref_check}>
-  {`Checked`}
-</Checkbox>
-  <Switch id={`switch`} ref={ref_switch}>
-  {`Switched`}
-</Switch>
-</HStack>
-  <Button type={`submit`}>
-  {`Submit`}
-</Button>
-</VStack>
-</Box>
+  <Box_9eb26c428c23978b918080c63f503b0c/>
 </VStack>
   <Divider sx={{"marginBottom": "1em", "marginTop": "0.5em"}}/>
   <VStack sx={{"width": "100%", "marginTop": "2em", "padding": "2em"}}>

@@ -1,10 +1,16 @@
-import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-import { Global, css } from "@emotion/react";
-import theme from "/utils/theme";
-import { clientStorage, initialEvents, initialState, StateContext, EventLoopContext } from "/utils/context.js";
-import { useEventLoop } from "/utils/state";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react"
+import theme from "/utils/theme.js"
+import { css, Global } from "@emotion/react"
+import ChakraColorModeProvider from "/components/reflex/chakra_color_mode_provider.js"
+import { Fragment } from "react"
+import "focus-visible/dist/focus-visible"
 
+
+import { EventLoopProvider, StateProvider } from "/utils/context.js";
+import { ThemeProvider } from 'next-themes'
 import '/styles/styles.css'
+
+
 
 const GlobalStyles = css`
   /* Hide the blue border around Chakra components. */
@@ -14,30 +20,33 @@ const GlobalStyles = css`
   }
 `;
 
-function EventLoopProvider({ children }) {
-  const [state, addEvents, connectError] = useEventLoop(
-    initialState,
-    initialEvents,
-    clientStorage,
-  )
+
+function AppWrap({children}) {
+
+
   return (
-    <EventLoopContext.Provider value={[addEvents, connectError]}>
-      <StateContext.Provider value={state}>
-        {children}
-      </StateContext.Provider>
-    </EventLoopContext.Provider>
+    <ChakraProvider theme={extendTheme(theme)}>
+  <Global styles={GlobalStyles}/>
+  <ChakraColorModeProvider>
+  <Fragment>
+  {children}
+</Fragment>
+</ChakraColorModeProvider>
+</ChakraProvider>
   )
 }
 
-function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }) {
   return (
-    <ChakraProvider theme={extendTheme(theme)}>
-      <Global styles={GlobalStyles} />
-      <EventLoopProvider>
-        <Component {...pageProps} />
-      </EventLoopProvider>
-    </ChakraProvider>
+    <ThemeProvider defaultTheme="light" storageKey="chakra-ui-color-mode" attribute="class">
+      <AppWrap>
+        <StateProvider>
+          <EventLoopProvider>
+            <Component {...pageProps} />
+          </EventLoopProvider>
+        </StateProvider>
+      </AppWrap>
+    </ThemeProvider>
   );
 }
 
-export default MyApp;

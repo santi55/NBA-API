@@ -32,7 +32,7 @@ def nba() -> rx.Component:
                 spacing=Size.BIG.value,
                 margin_top="0px",
                 width="70%",
-                align_items="center"
+                justify="center"
             )
         ),
         rx.divider(),
@@ -73,7 +73,7 @@ def index() -> rx.Component:
                         "WORK IN PROGRESS...",
                         color = "white",
                         font_family= Font.TITLE.value,
-                        font_size = Size.BIG.value,
+                        font_size = "sm",
                         border_radius="md",
                         bg="black"
                     ),
