@@ -10,19 +10,49 @@ import NextHead from "next/head"
 
 
 
-export function Link_f350a2ff4b9789d2a9deda287ee1eb00 () {
+export function Box_da9cdec7cf2ac574b2f25c2295b79e1f () {
   const [addEvents, connectError] = useContext(EventLoopContext);
+  const ref_email = useRef(null); refs['ref_email'] = ref_email;
+  const ref_switch = useRef(null); refs['ref_switch'] = ref_switch;
+  const ref_username = useRef(null); refs['ref_username'] = ref_username;
+  const ref_check = useRef(null); refs['ref_check'] = ref_check;
+  
+    const handleSubmit_daee9a8af3810de4f021097971473208 = useCallback((ev) => {
+        const $form = ev.target
+        ev.preventDefault()
+        const form_data = {...Object.fromEntries(new FormData($form).entries()), ...{"email": getRefValue(refs['ref_email']), "username": getRefValue(refs['ref_username']), "check": getRefValue(refs['ref_check']), "switch": getRefValue(refs['ref_switch'])}}
 
-  const on_click_ac8bdc8b0d4bac75f3381ef517169430 = useCallback((_e) => addEvents([Event("state.state.right", {})], (_e), {}), [addEvents, Event])
+        addEvents([Event("state.state.db_addUser", {user_data:form_data})])
+
+        if (true) {
+            $form.reset()
+        }
+    })
+    
+
 
   return (
-    <Link as={``} onClick={on_click_ac8bdc8b0d4bac75f3381ef517169430}>
-  <Image src={`logo.ico`} sx={{"bg": "white"}}/>
-</Link>
+    <Box as={`form`} onSubmit={handleSubmit_daee9a8af3810de4f021097971473208}>
+  <VStack>
+  <Input id={`username`} isRequired={true} placeholder={`User`} ref={ref_username} sx={{"color": "black"}} type={`text`}/>
+  <Input id={`email`} isRequired={true} placeholder={`Email`} ref={ref_email} sx={{"color": "black"}} type={`text`}/>
+  <HStack>
+  <Checkbox id={`check`} ref={ref_check} value={`true`}>
+  {`Checked`}
+</Checkbox>
+  <Switch id={`switch`} ref={ref_switch} value={true}>
+  {`Switched`}
+</Switch>
+</HStack>
+  <Button type={`submit`}>
+  {`Submit`}
+</Button>
+</VStack>
+</Box>
   )
 }
 
-export function Drawer_af37a530844b39f4db77943508fd9e21 () {
+export function Drawer_3e9dc610c95abc7c3e5fdede9bc6cae0 () {
   const state__state = useContext(StateContexts.state__state)
 
 
@@ -34,7 +64,7 @@ export function Drawer_af37a530844b39f4db77943508fd9e21 () {
   {`Confirm`}
 </DrawerHeader>
   <DrawerBody>
-  <Fragment_44f3a1bb7058a9a9d9dbd7d0b1f2edc9/>
+  <Fragment_c1d0a013a5ab9397db3b6389b2a7e990/>
 </DrawerBody>
   <DrawerFooter>
   <Button_e4987f3f3d0cdfccd0a2ccd9be13f575/>
@@ -45,7 +75,7 @@ export function Drawer_af37a530844b39f4db77943508fd9e21 () {
   )
 }
 
-export function Fragment_44f3a1bb7058a9a9d9dbd7d0b1f2edc9 () {
+export function Fragment_c1d0a013a5ab9397db3b6389b2a7e990 () {
   const state__state = useContext(StateContexts.state__state)
   const [addEvents, connectError] = useContext(EventLoopContext);
 
@@ -105,45 +135,15 @@ export function Fragment_44f3a1bb7058a9a9d9dbd7d0b1f2edc9 () {
   )
 }
 
-export function Box_b72a46c4c64ee3693b4c2efac59855c8 () {
-  const ref_check = useRef(null); refs['ref_check'] = ref_check;
+export function Link_f350a2ff4b9789d2a9deda287ee1eb00 () {
   const [addEvents, connectError] = useContext(EventLoopContext);
-  
-    const handleSubmit_2d46214db833cbc7868f19a2b7ad04d0 = useCallback((ev) => {
-        const $form = ev.target
-        ev.preventDefault()
-        const form_data = {...Object.fromEntries(new FormData($form).entries()), ...{"username": getRefValue(refs['ref_username']), "email": getRefValue(refs['ref_email']), "switch": getRefValue(refs['ref_switch']), "check": getRefValue(refs['ref_check'])}}
 
-        addEvents([Event("state.state.db_addUser", {user_data:form_data})])
-
-        if (true) {
-            $form.reset()
-        }
-    })
-    
-  const ref_switch = useRef(null); refs['ref_switch'] = ref_switch;
-  const ref_email = useRef(null); refs['ref_email'] = ref_email;
-  const ref_username = useRef(null); refs['ref_username'] = ref_username;
-
+  const on_click_ac8bdc8b0d4bac75f3381ef517169430 = useCallback((_e) => addEvents([Event("state.state.right", {})], (_e), {}), [addEvents, Event])
 
   return (
-    <Box as={`form`} onSubmit={handleSubmit_2d46214db833cbc7868f19a2b7ad04d0}>
-  <VStack>
-  <Input id={`username`} isRequired={true} placeholder={`User`} ref={ref_username} sx={{"color": "black"}} type={`text`}/>
-  <Input id={`email`} isRequired={true} placeholder={`Email`} ref={ref_email} sx={{"color": "black"}} type={`text`}/>
-  <HStack>
-  <Checkbox id={`check`} ref={ref_check} value={`true`}>
-  {`Checked`}
-</Checkbox>
-  <Switch id={`switch`} ref={ref_switch} value={true}>
-  {`Switched`}
-</Switch>
-</HStack>
-  <Button type={`submit`}>
-  {`Submit`}
-</Button>
-</VStack>
-</Box>
+    <Link as={``} onClick={on_click_ac8bdc8b0d4bac75f3381ef517169430}>
+  <Image src={`logo.ico`} sx={{"bg": "white"}}/>
+</Link>
   )
 }
 
@@ -195,7 +195,7 @@ export default function Component() {
 </Link>
   <Box>
   <Link_f350a2ff4b9789d2a9deda287ee1eb00/>
-  <Drawer_af37a530844b39f4db77943508fd9e21/>
+  <Drawer_3e9dc610c95abc7c3e5fdede9bc6cae0/>
 </Box>
 </HStack>
   <Divider sx={{"marginBottom": "1em", "marginTop": "0.5em"}}/>
@@ -204,7 +204,7 @@ export default function Component() {
   {`Registrate`}
 </Heading>
   <Divider sx={{"marginBottom": "1em", "marginTop": "0.5em"}}/>
-  <Box_b72a46c4c64ee3693b4c2efac59855c8/>
+  <Box_da9cdec7cf2ac574b2f25c2295b79e1f/>
 </VStack>
   <Divider sx={{"marginBottom": "1em", "marginTop": "0.5em"}}/>
   <VStack sx={{"width": "100%", "marginTop": "2em", "padding": "2em"}}>
