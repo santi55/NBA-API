@@ -6,9 +6,11 @@ nba_data = pd.read_csv(
 )
 
 
-rx.data_table(
-    data=nba_data[["Name", "Height", "Age"]],
-    pagination=True,
-    search=True,
-    sort=True,
-)
+def tabla(): 
+    return rx.data_table(
+        data=nba_data[["Name", "Height", "Age"]],
+        pagination=True,
+        search=True,
+        sort=True,
+        width="80%"
+    )

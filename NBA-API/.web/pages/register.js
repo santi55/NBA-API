@@ -10,48 +10,6 @@ import NextHead from "next/head"
 
 
 
-export function Box_eb45e7443785a1dfa4c49beb16b818f7 () {
-  const ref_switch = useRef(null); refs['ref_switch'] = ref_switch;
-  
-    const handleSubmit_69947c9544d03e4dba4aa89f2ee589f4 = useCallback((ev) => {
-        const $form = ev.target
-        ev.preventDefault()
-        const form_data = {...Object.fromEntries(new FormData($form).entries()), ...{"username": getRefValue(refs['ref_username']), "switch": getRefValue(refs['ref_switch']), "check": getRefValue(refs['ref_check']), "email": getRefValue(refs['ref_email'])}}
-
-        addEvents([Event("state.state.db_addUser", {user_data:form_data})])
-
-        if (true) {
-            $form.reset()
-        }
-    })
-    
-  const [addEvents, connectError] = useContext(EventLoopContext);
-  const ref_username = useRef(null); refs['ref_username'] = ref_username;
-  const ref_email = useRef(null); refs['ref_email'] = ref_email;
-  const ref_check = useRef(null); refs['ref_check'] = ref_check;
-
-
-  return (
-    <Box as={`form`} onSubmit={handleSubmit_69947c9544d03e4dba4aa89f2ee589f4}>
-  <VStack>
-  <Input id={`username`} isRequired={true} placeholder={`User`} ref={ref_username} sx={{"color": "black"}} type={`text`}/>
-  <Input id={`email`} isRequired={true} placeholder={`Email`} ref={ref_email} sx={{"color": "black"}} type={`text`}/>
-  <HStack>
-  <Checkbox id={`check`} ref={ref_check} value={`true`}>
-  {`Checked`}
-</Checkbox>
-  <Switch id={`switch`} ref={ref_switch} value={true}>
-  {`Switched`}
-</Switch>
-</HStack>
-  <Button type={`submit`}>
-  {`Submit`}
-</Button>
-</VStack>
-</Box>
-  )
-}
-
 export function Link_f350a2ff4b9789d2a9deda287ee1eb00 () {
   const [addEvents, connectError] = useContext(EventLoopContext);
 
@@ -64,7 +22,7 @@ export function Link_f350a2ff4b9789d2a9deda287ee1eb00 () {
   )
 }
 
-export function Drawer_e1143384c9fca81d8601b03d228edb65 () {
+export function Drawer_af37a530844b39f4db77943508fd9e21 () {
   const state__state = useContext(StateContexts.state__state)
 
 
@@ -76,7 +34,7 @@ export function Drawer_e1143384c9fca81d8601b03d228edb65 () {
   {`Confirm`}
 </DrawerHeader>
   <DrawerBody>
-  <Fragment_25286d5978c5e1c3b9bbe579550e969a/>
+  <Fragment_44f3a1bb7058a9a9d9dbd7d0b1f2edc9/>
 </DrawerBody>
   <DrawerFooter>
   <Button_e4987f3f3d0cdfccd0a2ccd9be13f575/>
@@ -87,19 +45,7 @@ export function Drawer_e1143384c9fca81d8601b03d228edb65 () {
   )
 }
 
-export function Button_e4987f3f3d0cdfccd0a2ccd9be13f575 () {
-  const [addEvents, connectError] = useContext(EventLoopContext);
-
-  const on_click_ac8bdc8b0d4bac75f3381ef517169430 = useCallback((_e) => addEvents([Event("state.state.right", {})], (_e), {}), [addEvents, Event])
-
-  return (
-    <Button onClick={on_click_ac8bdc8b0d4bac75f3381ef517169430}>
-  {`Close`}
-</Button>
-  )
-}
-
-export function Fragment_25286d5978c5e1c3b9bbe579550e969a () {
+export function Fragment_44f3a1bb7058a9a9d9dbd7d0b1f2edc9 () {
   const state__state = useContext(StateContexts.state__state)
   const [addEvents, connectError] = useContext(EventLoopContext);
 
@@ -159,6 +105,60 @@ export function Fragment_25286d5978c5e1c3b9bbe579550e969a () {
   )
 }
 
+export function Box_b72a46c4c64ee3693b4c2efac59855c8 () {
+  const ref_check = useRef(null); refs['ref_check'] = ref_check;
+  const [addEvents, connectError] = useContext(EventLoopContext);
+  
+    const handleSubmit_2d46214db833cbc7868f19a2b7ad04d0 = useCallback((ev) => {
+        const $form = ev.target
+        ev.preventDefault()
+        const form_data = {...Object.fromEntries(new FormData($form).entries()), ...{"username": getRefValue(refs['ref_username']), "email": getRefValue(refs['ref_email']), "switch": getRefValue(refs['ref_switch']), "check": getRefValue(refs['ref_check'])}}
+
+        addEvents([Event("state.state.db_addUser", {user_data:form_data})])
+
+        if (true) {
+            $form.reset()
+        }
+    })
+    
+  const ref_switch = useRef(null); refs['ref_switch'] = ref_switch;
+  const ref_email = useRef(null); refs['ref_email'] = ref_email;
+  const ref_username = useRef(null); refs['ref_username'] = ref_username;
+
+
+  return (
+    <Box as={`form`} onSubmit={handleSubmit_2d46214db833cbc7868f19a2b7ad04d0}>
+  <VStack>
+  <Input id={`username`} isRequired={true} placeholder={`User`} ref={ref_username} sx={{"color": "black"}} type={`text`}/>
+  <Input id={`email`} isRequired={true} placeholder={`Email`} ref={ref_email} sx={{"color": "black"}} type={`text`}/>
+  <HStack>
+  <Checkbox id={`check`} ref={ref_check} value={`true`}>
+  {`Checked`}
+</Checkbox>
+  <Switch id={`switch`} ref={ref_switch} value={true}>
+  {`Switched`}
+</Switch>
+</HStack>
+  <Button type={`submit`}>
+  {`Submit`}
+</Button>
+</VStack>
+</Box>
+  )
+}
+
+export function Button_e4987f3f3d0cdfccd0a2ccd9be13f575 () {
+  const [addEvents, connectError] = useContext(EventLoopContext);
+
+  const on_click_ac8bdc8b0d4bac75f3381ef517169430 = useCallback((_e) => addEvents([Event("state.state.right", {})], (_e), {}), [addEvents, Event])
+
+  return (
+    <Button onClick={on_click_ac8bdc8b0d4bac75f3381ef517169430}>
+  {`Close`}
+</Button>
+  )
+}
+
 export default function Component() {
 
   return (
@@ -166,7 +166,7 @@ export default function Component() {
   <Fragment_fd0e7cb8f9fb4669a6805377d925fba0/>
   <Box>
   <HStack sx={{"paddingX": "1em", "paddingY": "0.5em", "top": "0", "width": "100%", "position": "sticky", "zIndex": "4", "height": "5%", "borderBottom": "0.25em solid white", "bgImage": "/background/background.jpg"}}>
-  <Link as={NextLink} href={`/`}>
+  <Link as={``}>
   <Text>
   <Text as={`span`} sx={{"fontStyle": "italic"}}>
   {`data`}
@@ -195,7 +195,7 @@ export default function Component() {
 </Link>
   <Box>
   <Link_f350a2ff4b9789d2a9deda287ee1eb00/>
-  <Drawer_e1143384c9fca81d8601b03d228edb65/>
+  <Drawer_af37a530844b39f4db77943508fd9e21/>
 </Box>
 </HStack>
   <Divider sx={{"marginBottom": "1em", "marginTop": "0.5em"}}/>
@@ -204,7 +204,7 @@ export default function Component() {
   {`Registrate`}
 </Heading>
   <Divider sx={{"marginBottom": "1em", "marginTop": "0.5em"}}/>
-  <Box_eb45e7443785a1dfa4c49beb16b818f7/>
+  <Box_b72a46c4c64ee3693b4c2efac59855c8/>
 </VStack>
   <Divider sx={{"marginBottom": "1em", "marginTop": "0.5em"}}/>
   <VStack sx={{"width": "100%", "marginTop": "2em", "padding": "2em"}}>

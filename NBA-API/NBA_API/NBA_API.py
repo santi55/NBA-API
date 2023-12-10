@@ -13,6 +13,7 @@ from NBA_API.components.sidebar import sidebar
 from NBA_API.logica.stats import jornada,stats_matches,imprimeDay
 from NBA_API.state import State
 from NBA_API.components.spline import spline
+from NBA_API.components.table_player import tabla
 from NBA_API.logica.user import form_register, lista_usuarios
 
 docs_url = "https://reflex.dev/docs/getting-started/introduction"
@@ -67,25 +68,35 @@ def index() -> rx.Component:
         header(),
         rx.center(
             rx.vstack(
-                rx.vstack(
-                    rx.image(src="/nba.ico"),
-                    rx.heading(
-                        "WORK IN PROGRESS...",
-                        color = "white",
-                        font_family= Font.TITLE.value,
-                        font_size = "sm",
-                        border_radius="md",
-                        bg="black"
+                rx.hstack(
+                    rx.image(
+                        src="/nba.ico",width="100px",
+                        height="auto",
+                        border_radius="15px 50px",
+                        border="5px solid #555",
+                        box_shadow="lg"),
+                    rx.vstack(
+                        rx.heading(
+                            "WORK IN PROGRESS...",
+                            color = "white",
+                            font_family= Font.TITLE.value,
+                            font_size = "lg",
+                            border_radius="md",
+                            bg="black"
+                        ),
+                        rx.progress(
+                            is_indeterminate=True,
+                            color_scheme="yellow",
+                            width = "100%"
+                        ),
+                        justify="center",
+                        margin = Size.BIG.value,
+                        padding = Size.BIG.value
                     ),
-                    rx.progress(
-                        is_indeterminate=True,
-                        color_scheme="yellow",
-                        width = "100%"
-                    ),
-                    justify="center",
-                    margin = Size.BIG.value,
-                    padding = Size.BIG.value
-                ),
+                    margin = Size.MEDIUM.value               ),
+            rx.divider(),
+            tabla(),
+            rx.divider(),
             rx.responsive_grid(
                     rx.foreach(
                         list(range(1,31)),
@@ -113,7 +124,7 @@ def index() -> rx.Component:
                 margin_bottom = Size.BIG.value
             )
         ),
-        nba(),
+        nba()
     )
 # Add state and page to the app. 
 app = rx.App(style=styles.BASE_STYLE)
