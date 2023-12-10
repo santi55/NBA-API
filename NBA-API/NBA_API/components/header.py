@@ -16,7 +16,7 @@ def header() -> rx.Component:
                 rx.span("data",font_style="italic"),
                 rx.span("JS",font_weight="bold"),
             ),
-            href="/"
+            ##href="/"
         ),
         rx.spacer(),
         rx.hstack(
