@@ -1,5 +1,5 @@
 import { Fragment } from "react"
-import { Fragment_fd0e7cb8f9fb4669a6805377d925fba0, Heading_8490ff7903bc070432b0d8a4c5665837, Simplegrid_406fad81b76505d966fc266b8504c897 } from "/utils/stateful_components"
+import { Fragment_fd0e7cb8f9fb4669a6805377d925fba0, Heading_8490ff7903bc070432b0d8a4c5665837, Simplegrid_0b0409b45fb352875e0caaaa8ed78726 } from "/utils/stateful_components"
 import { Box, Center, Divider, HStack, Input, Spacer, Text, VStack } from "@chakra-ui/react"
 import "focus-visible/dist/focus-visible"
 import { StarIcon } from "@chakra-ui/icons"
@@ -29,7 +29,7 @@ export default function Component() {
   <Input defaultValue={`{state__state.date}`} errorBorderColor={`red`} focusBorderColor={`orange`} size={`xs`} sx={{"borderColor": "black", "width": "50%"}} type={`date`}/>
 </VStack>
   <Divider sx={{"marginBottom": "1em", "marginTop": "0.5em"}}/>
-  <Simplegrid_406fad81b76505d966fc266b8504c897/>
+  <Simplegrid_0b0409b45fb352875e0caaaa8ed78726/>
 </VStack>
 </Center>
   <Divider sx={{"marginBottom": "1em", "marginTop": "0.5em"}}/>
